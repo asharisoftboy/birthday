@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ASHARI — The Midnight Birthday</title>
+<meta name="theme-color" content="#06152F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="1">
+
+<!-- ══════════ LOADING TRANSITION ══════════ -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="loader-monogram">A</div>
+    <div class="loader-title">ASHARI</div>
+    <div class="loader-sub">THE MIDNIGHT BIRTHDAY EXPERIENCE</div>
+    <div class="loader-bar"><span></span></div>
+  </div>
+</div>
+
+<!-- ══════════ GLOBAL LAYERS ══════════ -->
+<canvas id="starCanvas" aria-hidden="true"></canvas>
+<div id="pageTransition" aria-hidden="true"></div>
+<div id="glitchOverlay" aria-hidden="true"></div>
+<button id="muteBtn" aria-label="Suara" title="Suara">&#9836;</button>
+
+<!-- ════════════════════════════════════════
+     PAGE 1 — THE GRAND ENTRANCE
+     ════════════════════════════════════════ -->
+<section class="page active" id="page1">
+  <div class="theatre" id="theatre">
+    <div class="spotlight" id="spotlight"></div>
+    <div class="curtain curtain-left" id="curtainL"></div>
+    <div class="curtain curtain-right" id="curtainR"></div>
+
+    <div class="p1-content" id="p1Content">
+      <div class="clock-wrap">
+        <div class="clock" aria-label="Jam dinding">
+          <div class="clock-face">
+            <div class="clock-ticks" id="clockTicks"></div>
+            <div class="hand hand-hour" id="handHour"></div>
+            <div class="hand hand-minute" id="handMinute"></div>
+            <div class="hand hand-second" id="handSecond"></div>
+            <div class="clock-cap"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="digital-clock" id="digitalClock">00:00:00</div>
+      <div class="p1-date">06 NOVEMBER 2026</div>
+      <div class="p1-tagline">TONIGHT IS ALL ABOUT YOU</div>
+      <button class="btn-primary" id="startBtn">START THE EXPERIENCE</button>
+      <div class="p1-hint">Asia/Jakarta &middot; WIB</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     PAGE 2 — THE SECRET ACCESS
+     ════════════════════════════════════════ -->
+<section class="page" id="page2">
+  <div class="p2-bg"></div>
+  <div class="p2-content">
+    <h1 class="p2-title">A LITTLE SECRET</h1>
+    <p class="p2-sub">Some memories can only be unlocked with the right code.</p>
+
+    <div class="pin-panel" id="pinPanel">
+      <div class="pin-scanline"></div>
+      <div class="pin-status" id="pinStatus">ENTER ACCESS CODE</div>
+      <div class="pin-boxes" id="pinBoxes">
+        <div class="pin-box" data-i="0"></div>
+        <div class="pin-box" data-i="1"></div>
+        <div class="pin-box" data-i="2"></div>
+        <div class="pin-box" data-i="3"></div>
+        <div class="pin-box" data-i="4"></div>
+        <div class="pin-box" data-i="5"></div>
+      </div>
+      <div class="pin-progress" id="pinProgress"></div>
+
+      <div class="keypad" id="keypad">
+        <button class="key" data-key="1">1</button>
+        <button class="key" data-key="2">2</button>
+        <button class="key" data-key="3">3</button>
+        <button class="key" data-key="4">4</button>
+        <button class="key" data-key="5">5</button>
+        <button class="key" data-key="6">6</button>
+        <button class="key" data-key="7">7</button>
+        <button class="key" data-key="8">8</button>
+        <button class="key" data-key="9">9</button>
+        <button class="key key-alt" data-key="delete">&#9003;</button>
+        <button class="key" data-key="0">0</button>
+        <button class="key key-alt" data-key="enter">&#9166;</button>
+      </div>
+      <div class="keypad-labels">
+        <span>DELETE</span><span>ENTER</span>
+      </div>
+      <div class="granted-particles" id="grantedParticles"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     PAGE 3 — THE NAME REVEAL
+     ════════════════════════════════════════ -->
+<section class="page" id="page3">
+  <div class="p3-glow" id="p3Glow"></div>
+  <div class="p3-dust" id="p3Dust"></div>
+  <div class="name-stage" id="nameStage" aria-label="ASHARI"></div>
+  <div class="p3-subtitle" id="p3Subtitle">THIS IS YOUR MOMENT.</div>
+  <button class="btn-primary btn-continue" id="continueBtn">CONTINUE</button>
+</section>
+
+<!-- ════════════════════════════════════════
+     PAGE 4 — THE BIRTHDAY CELEBRATION
+     ════════════════════════════════════════ -->
+<section class="page" id="page4">
+  <canvas id="fireworkCanvas" aria-hidden="true"></canvas>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <div class="p4-content">
+    <div class="p4-kicker">A NIGHT TO REMEMBER</div>
+    <h1 class="p4-title" id="p4Title">
+      <span class="p4-line">HAPPY</span>
+      <span class="p4-line">BIRTHDAY</span>
+    </h1>
+    <div class="p4-name" id="p4Name">ASHARI</div>
+    <div class="p4-age" id="ageText"></div>
+
+    <div class="cake-wrap" id="cakeWrap">
+      <div class="cake">
+        <div class="cake-plate"></div>
+        <div class="cake-tier tier-3"><div class="icing"></div></div>
+        <div class="cake-tier tier-2"><div class="icing"></div></div>
+        <div class="cake-tier tier-1"><div class="icing"></div></div>
+        <div class="candles">
+          <div class="candle"><div class="wick"></div><div class="flame"></div></div>
+          <div class="candle"><div class="wick"></div><div class="flame"></div></div>
+          <div class="candle"><div class="wick"></div><div class="flame"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary" id="blowBtn">BLOW THE CANDLES</button>
+    <div class="p4-wish" id="wishText">MAKE A WISH.</div>
+    <button class="btn-primary btn-last" id="lastThingBtn">ONE LAST THING</button>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     PAGE 5 — A LETTER TO MYSELF
+     ════════════════════════════════════════ -->
+<section class="page" id="page5">
+  <div class="p5-content">
+    <div class="letter-paper" id="letterPaper">
+      <div class="letter-seal">A</div>
+      <h2 class="letter-title">DEAR ASHARI,</h2>
+      <div class="letter-body" id="letterBody">
+        <p>Selamat ulang tahun untuk diriku sendiri.</p>
+        <p>Terima kasih sudah sampai sejauh ini. Untuk semua perjalanan, pengalaman, keputusan, dan hal-hal yang telah dilewati.</p>
+        <p>Hari ini bukan hanya tentang bertambahnya usia, tetapi juga tentang kesempatan baru untuk tumbuh, belajar, dan menjadi seseorang yang lebih baik.</p>
+        <p>Semoga langkah berikutnya membawa lebih banyak keberanian, kesempatan, kebahagiaan, dan pencapaian.</p>
+        <p>Tidak perlu menjadi sempurna. Cukup terus berkembang dan jangan berhenti memperjuangkan hal-hal yang berarti.</p>
+        <p class="letter-strong">Happy Birthday, Ashari.</p>
+        <p class="letter-date">06 November 2026.</p>
+      </div>
+      <div class="letter-close" id="letterClose">THE STORY CONTINUES&hellip;</div>
+      <button class="btn-primary btn-replay" id="replayBtn">REPLAY EXPERIENCE</button>
+    </div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
